@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
 
 export default () => {
-  return <Layout.Sider></Layout.Sider>;
+  return <Layout.Sider theme='light'></Layout.Sider>;
 };

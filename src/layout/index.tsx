@@ -6,12 +6,12 @@ const { Content } = Layout;
 export default function LayoutSide() {
   return (
     <Layout>
-      <Header />
+      <Sider />
       <Layout>
-        <Sider />
+        <Header />
         <Content />
+        <Footer />
       </Layout>
-      <Footer />
     </Layout>
   );
 }

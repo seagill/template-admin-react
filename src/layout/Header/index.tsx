@@ -12,15 +12,14 @@ import {
 const { Header } = Layout;
 export default () => {
   return (
-    <Header>
-      <div className={style.logo}></div>
-      <div>
-        <>
+    <Header className={style.header}>
+      <div className={style.content}>
+        <div>
           <MenuFoldOutlined />
           <MenuUnfoldOutlined />
-        </>
-        <Space>
-          <Input />
+        </div>
+        <Space size='middle'>
+          <Input placeholder='请输入关键字进行检索' />
           <MessageOutlined />
           <GithubOutlined />
           <QuestionOutlined />
