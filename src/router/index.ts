@@ -12,8 +12,8 @@ interface Meta {
 
 export interface RouteItem {
   path: string;
+  Component?: React.FC<any>;
   sort?: number;
-  Component?: React.FC;
   meta?: Meta;
   redirect?: string;
   children?: RouteItem[];

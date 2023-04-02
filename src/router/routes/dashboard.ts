@@ -3,6 +3,14 @@ import { lazy } from 'react';
 import { DashboardOutlined } from '@ant-design/icons';
 const dashboardRoutes: RouteItem[] = [
   {
+    path: '/',
+    redirect: '/dashboard',
+    meta: {
+      title: '首页',
+      hidden: true,
+    },
+  },
+  {
     path: '/dashboard',
     sort: 1,
     Component: lazy(() => import('@/layout/index')),

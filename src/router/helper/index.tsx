@@ -20,11 +20,13 @@ export function handleRouteToItem(routes: RouteItem[]): MenuItem[] {
   });
 }
 
-export function joinPath(...paths: string[]): string {
-  const newPath = paths.map((item) => {
-    if (item.startsWith('/')) return item.slice(1);
-    return item;
-  });
+export function pathJoin(...paths: string[]): string {
+  const newPath = paths
+    .map((item) => {
+      if (item.startsWith('/')) return item.slice(1);
+      return item;
+    })
+    .filter((item) => item !== '/' && item !== '');
   return `/${newPath.join('/')}`;
 }
 
@@ -36,7 +38,7 @@ export function getMenuRoutes(routes: RouteItem[]): MenuItem[] {
   const menus = showMenu.map((item) => {
     const child = item.children?.find((item) => item.meta?.single === true);
     if (child) {
-      child.path = joinPath(item.path, child.path);
+      child.path = pathJoin(item.path, child.path);
       item = child;
     }
     return item;

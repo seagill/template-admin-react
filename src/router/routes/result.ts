@@ -13,21 +13,21 @@ const resultRoutes: RouteItem[] = [
     children: [
       {
         path: '/500',
-        Component: lazy(() => import('@/pages/Dashboard')),
+        Component: lazy(() => import('@/pages/ErrorPage/500')),
         meta: {
           title: '500',
         },
       },
       {
         path: '/403',
-        Component: lazy(() => import('@/pages/Dashboard')),
+        Component: lazy(() => import('@/pages/ErrorPage/403')),
         meta: {
           title: '403',
         },
       },
       {
         path: '/404',
-        Component: lazy(() => import('@/pages/Dashboard')),
+        Component: lazy(() => import('@/pages/ErrorPage/404')),
         meta: {
           title: '404',
         },
