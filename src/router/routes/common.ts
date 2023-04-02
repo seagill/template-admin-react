@@ -1,8 +1,9 @@
 import { lazy } from 'react';
 import { RouteItem } from '../index';
-export const ProtectRoutes: RouteItem[] = [
+const commonRoutes: RouteItem[] = [
   {
     path: '/login',
+    sort: 0,
     Component: lazy(() => import('@/pages/Login')),
     meta: {
       title: '登录',
@@ -10,3 +11,5 @@ export const ProtectRoutes: RouteItem[] = [
     },
   },
 ];
+
+export default commonRoutes;

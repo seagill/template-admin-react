@@ -1,22 +1,25 @@
 import { RouteItem } from '../index';
 import { lazy } from 'react';
-import { DashOutlined } from '@ant-design/icons';
-export const PrivateRoutes: RouteItem[] = [
+import { UserOutlined } from '@ant-design/icons';
+const userRoutes: RouteItem[] = [
   {
-    path: '/dashboard',
+    path: '/user',
+    sort: 2,
     Component: lazy(() => import('@/layout/index')),
     meta: {
-      title: 'Dashboard',
+      title: '个人中心',
+      Icon: UserOutlined,
     },
     children: [
       {
-        path: '/',
+        path: '/info',
         Component: lazy(() => import('@/pages/Dashboard')),
         meta: {
-          title: 'Dashboard',
-          Icon: DashOutlined,
+          title: '个人中心',
         },
       },
     ],
   },
 ];
+
+export default userRoutes;
