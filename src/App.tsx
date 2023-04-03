@@ -1,16 +1,15 @@
-import BaseLayout from '@/layout/index';
-import RouterContent from './router/RouterContent';
+import { Suspense } from 'react';
 import store from '@/store';
+import router from '@/router';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import { Spin } from 'antd';
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <div className='app'>
-          <RouterContent />
-        </div>
-      </BrowserRouter>
+      <Suspense fallback={<Spin />}>
+        <RouterProvider router={router}></RouterProvider>
+      </Suspense>
     </Provider>
   );
 }

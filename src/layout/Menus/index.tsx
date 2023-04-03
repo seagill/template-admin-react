@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import styles from './index.module.less';
 import { useStoreSelector } from '@/store';
 import Logo from '@/components/Logo';
 import { routes } from '@/router';
 import { getMenuRoutes } from '@/router/helper';
-const menus = getMenuRoutes(routes);
 
 function Menus() {
+  const menus = getMenuRoutes(routes);
+
   const collapsed = useStoreSelector((state) => state.golabSlice.collapsed);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [openKeys, setOpenKeys] = useState([location.pathname]);
 
   const onOpenChange = (keys: string[]) => {
@@ -20,6 +22,7 @@ function Menus() {
 
   const onClick = (i: { key: string; keyPath: string[] }) => {
     setOpenKeys(i.keyPath);
+    navigate(i.key);
   };
 
   return (

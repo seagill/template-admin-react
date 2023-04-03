@@ -3,7 +3,6 @@ import { RouteItem } from '../index';
 const commonRoutes: RouteItem[] = [
   {
     path: '/login',
-    sort: 0,
     Component: lazy(() => import('@/pages/Login')),
     meta: {
       title: '登录',

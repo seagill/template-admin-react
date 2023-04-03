@@ -1,6 +1,6 @@
 import React from 'react';
+import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom';
 import commonRoutes from './routes/common';
-import userRoutes from './routes/user';
 import dashboardRoutes from './routes/dashboard';
 import resultRoutes from './routes/result';
 interface Meta {
@@ -9,14 +9,15 @@ interface Meta {
   hidden?: boolean;
   single?: boolean;
 }
-
-export interface RouteItem {
+export interface RouteItem extends Omit<NonIndexRouteObject, 'children' | 'path'> {
   path: string;
-  Component?: React.FC<any>;
-  sort?: number;
   meta?: Meta;
   redirect?: string;
   children?: RouteItem[];
 }
 
-export const routes: RouteItem[] = [...commonRoutes, ...dashboardRoutes, ...resultRoutes, ...userRoutes];
+export const routes: RouteItem[] = [...commonRoutes, ...dashboardRoutes, ...resultRoutes];
+
+const router = createBrowserRouter(routes);
+
+export default router;

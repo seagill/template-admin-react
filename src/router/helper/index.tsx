@@ -3,23 +3,6 @@ import type { MenuProps } from 'antd';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-export function handleRouteToItem(routes: RouteItem[]): MenuItem[] {
-  return routes.map((item) => {
-    const Icon = item.meta?.Icon;
-    const el: any = {
-      label: item.meta?.title,
-      key: item.path,
-      icon: Icon ? <Icon /> : null,
-    };
-
-    if (item.children && item.children.length > 0) {
-      el.children = handleRouteToItem(item.children);
-    }
-
-    return el;
-  });
-}
-
 export function pathJoin(...paths: string[]): string {
   const newPath = paths
     .map((item) => {
@@ -28,6 +11,23 @@ export function pathJoin(...paths: string[]): string {
     })
     .filter((item) => item !== '/' && item !== '');
   return `/${newPath.join('/')}`;
+}
+
+export function handleRouteToItem(routes: RouteItem[], path = ''): MenuItem[] {
+  return routes.map((item) => {
+    const Icon = item.meta?.Icon;
+    const el: any = {
+      label: item.meta?.title,
+      key: pathJoin(path, item.path),
+      icon: Icon ? <Icon /> : null,
+    };
+
+    if (item.children && item.children.length > 0) {
+      el.children = handleRouteToItem(item.children, item.path);
+    }
+
+    return el;
+  });
 }
 
 export function getMenuRoutes(routes: RouteItem[]): MenuItem[] {
