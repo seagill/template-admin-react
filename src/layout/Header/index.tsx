@@ -26,29 +26,29 @@ function LayoutHeader() {
         <div>
           <Tooltip title={collapsed ? '展开菜单' : '折叠菜单'} color={color} overlayInnerStyle={overlayInnerStyle}>
             {collapsed ? (
-              <MenuUnfoldOutlined onClick={() => setCollapsed()} />
+              <MenuUnfoldOutlined className={style.icon} onClick={() => setCollapsed()} />
             ) : (
-              <MenuFoldOutlined onClick={() => setCollapsed()} />
+              <MenuFoldOutlined className={style.icon} onClick={() => setCollapsed()} />
             )}
           </Tooltip>
         </div>
         <Space size='middle'>
           <Input placeholder='请输入关键字进行检索' />
           <Tooltip title='站内信' color={color} overlayInnerStyle={overlayInnerStyle}>
-            <Badge count={10} offset={[5, -5]} size='small'>
-              <MessageOutlined />
+            <Badge count={10} size='small' offset={[5, -5]}>
+              <MessageOutlined className={style.icon} />
             </Badge>
           </Tooltip>
           <Tooltip title='代码仓库' color={color} overlayInnerStyle={overlayInnerStyle}>
-            <GithubOutlined />
+            <GithubOutlined className={style.icon} />
           </Tooltip>
           <Tooltip title='帮助文档' color={color} overlayInnerStyle={overlayInnerStyle}>
-            <QuestionCircleOutlined />
+            <QuestionCircleOutlined className={style.icon} />
           </Tooltip>
           <Tooltip title='用户中心' color={color} overlayInnerStyle={overlayInnerStyle}>
-            <UserOutlined />
+            <UserOutlined className={style.icon} />
           </Tooltip>
-          <SettingOutlined />
+          <SettingOutlined className={style.icon} />
         </Space>
       </div>
     </Header>
