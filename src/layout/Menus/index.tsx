@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, matchRoutes } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import styles from './index.module.less';
 import { useStoreSelector } from '@/store';
@@ -9,12 +9,13 @@ import { getMenuRoutes } from '@/router/helper';
 
 function Menus() {
   const menus = getMenuRoutes(routes);
-
   const collapsed = useStoreSelector((state) => state.golabSlice.collapsed);
-
   const location = useLocation();
   const navigate = useNavigate();
-  const [openKeys, setOpenKeys] = useState([location.pathname]);
+  const paths = matchRoutes(routes, location.pathname);
+  const defaultKeys = paths?.map((item) => item.pathname);
+  const [openKeys, setOpenKeys] = useState(defaultKeys);
+  const [selectedKeys, setselectedKeys] = useState(defaultKeys);
 
   const onOpenChange = (keys: string[]) => {
     setOpenKeys(keys.slice(-1));
@@ -22,6 +23,7 @@ function Menus() {
 
   const onClick = (i: { key: string; keyPath: string[] }) => {
     setOpenKeys(i.keyPath);
+    setselectedKeys([i.key]);
     navigate(i.key);
   };
 
@@ -32,7 +34,14 @@ function Menus() {
       </div>
       <div className={styles.content}>
         <Layout.Sider collapsed={collapsed} theme='light'>
-          <Menu mode='inline' items={menus} openKeys={openKeys} onOpenChange={onOpenChange} onClick={onClick} />
+          <Menu
+            mode='inline'
+            items={menus}
+            openKeys={openKeys}
+            selectedKeys={selectedKeys}
+            onOpenChange={onOpenChange}
+            onClick={onClick}
+          />
         </Layout.Sider>
       </div>
     </div>

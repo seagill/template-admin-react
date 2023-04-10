@@ -1,8 +1,12 @@
 import { RouteItem } from '../index';
 import type { MenuProps } from 'antd';
+import { routes } from '../index';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
+/**
+ * @description 路径处理
+ */
 export function pathJoin(...paths: string[]): string {
   const newPath = paths
     .map((item) => {
@@ -13,6 +17,9 @@ export function pathJoin(...paths: string[]): string {
   return `/${newPath.join('/')}`;
 }
 
+/**
+ * @description 菜单递归处理
+ */
 export function handleRouteToItem(routes: RouteItem[], path = ''): MenuItem[] {
   return routes.map((item) => {
     const Icon = item.meta?.Icon;
@@ -30,6 +37,9 @@ export function handleRouteToItem(routes: RouteItem[], path = ''): MenuItem[] {
   });
 }
 
+/**
+ * @description 获取菜单
+ */
 export function getMenuRoutes(routes: RouteItem[]): MenuItem[] {
   // 过滤需要隐藏的菜单
   const showMenu = routes.filter((item) => item.meta?.hidden !== true);
