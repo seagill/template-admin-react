@@ -6,9 +6,13 @@ import { Outlet } from 'react-router-dom';
 import styles from './index.module.less';
 import { useBreadcrumb } from '@/hooks/useBreadcrumb';
 const { Content } = Layout;
+import { useRouterGuard } from '@/hooks/useRouterGuard';
 
 function LayoutSide() {
   const items = useBreadcrumb();
+
+  useRouterGuard();
+
   return (
     <Layout className={styles.layout}>
       <Sider />
