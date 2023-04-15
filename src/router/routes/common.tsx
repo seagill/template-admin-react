@@ -1,9 +1,9 @@
-import { lazy } from 'react';
 import { RouteItem } from '../index';
+import Login from '@/pages/Login';
 const commonRoutes: RouteItem[] = [
   {
     path: '/login',
-    Component: lazy(() => import('@/pages/Login')),
+    element: <Login />,
     meta: {
       title: '登录',
       hidden: true,
