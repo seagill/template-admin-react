@@ -18,7 +18,7 @@ function LayoutSide() {
       <Sider />
       <Layout>
         <Header />
-        <Content>
+        <Content className={styles.main}>
           <div className={styles.content}>
             <div className={styles.breadcrumb}>
               <Breadcrumb items={items}></Breadcrumb>

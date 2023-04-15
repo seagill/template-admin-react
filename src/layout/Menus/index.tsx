@@ -9,13 +9,13 @@ import { getMenuRoutes } from '@/router/helper';
 
 function Menus() {
   const menus = getMenuRoutes(routes);
-  const collapsed = useStoreSelector((state) => state.golabSlice.collapsed);
+  const collapsed = useStoreSelector((state) => state.globalSlice.collapsed);
   const location = useLocation();
   const navigate = useNavigate();
   const paths = matchRoutes(routes, location.pathname);
   const defaultKeys = paths?.map((item) => item.pathname);
   const [openKeys, setOpenKeys] = useState(defaultKeys);
-  const [selectedKeys, setselectedKeys] = useState(defaultKeys);
+  const [selectedKeys, setSelectedKeys] = useState(defaultKeys);
 
   const onOpenChange = (keys: string[]) => {
     setOpenKeys(keys.slice(-1));
@@ -23,7 +23,7 @@ function Menus() {
 
   const onClick = (i: { key: string; keyPath: string[] }) => {
     setOpenKeys(i.keyPath);
-    setselectedKeys([i.key]);
+    setSelectedKeys([i.key]);
     navigate(i.key);
   };
 

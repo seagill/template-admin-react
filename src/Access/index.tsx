@@ -1,4 +1,4 @@
-import ErrorPage403 from '@/pages/ErrorPage/403';
+import ErrorPage403 from '@/pages/Result/403';
 interface Props {
   children: React.ReactNode;
   access: boolean;

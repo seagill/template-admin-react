@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Space, Input, Tooltip, Badge } from 'antd';
 import { useStoreDispatch, useStoreSelector } from '@/store';
-import { toggleCollapsed } from '@/store/feture/globalSlice';
+import { toggleCollapsed } from '@/store/feature/globalSlice';
 import {
   MessageOutlined,
   GithubOutlined,
@@ -18,7 +18,7 @@ const color = '#fff';
 const overlayInnerStyle = { color: '#000' };
 function LayoutHeader() {
   const dispatch = useStoreDispatch();
-  const { collapsed } = useStoreSelector((state) => state.golabSlice);
+  const { collapsed } = useStoreSelector((state) => state.globalSlice);
   const setCollapsed = () => dispatch(toggleCollapsed());
   return (
     <Header className={style.header}>

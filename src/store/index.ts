@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
-import golabSlice from './feture/globalSlice';
+import globalSlice from './feature/globalSlice';
 const store = configureStore({
-  reducer: { golabSlice },
+  reducer: { globalSlice },
 });
 
 export default store;

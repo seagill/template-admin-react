@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const golabSlice = createSlice({
+const globalSlice = createSlice({
   name: 'global',
   initialState: {
     collapsed: false,
@@ -12,6 +12,6 @@ const golabSlice = createSlice({
   },
 });
 
-export const { toggleCollapsed } = golabSlice.actions;
+export const { toggleCollapsed } = globalSlice.actions;
 
-export default golabSlice.reducer;
+export default globalSlice.reducer;
