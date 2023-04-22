@@ -3,9 +3,14 @@ function ErrorPage() {
   return (
     <Result
       status='error'
-      title='403'
-      subTitle='您还没有访问该页面的权限，请联系管理员开通'
-      extra={<Button type='primary'>返回首页</Button>}
+      title='添加失败'
+      subTitle='无法连接服务器！'
+      extra={
+        <>
+          <Button type='primary'>返回</Button>
+          <Button>重新添加</Button>
+        </>
+      }
     />
   );
 }

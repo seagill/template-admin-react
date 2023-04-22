@@ -2,7 +2,7 @@ import CardNum from './components/Card';
 import { Row, Col, Card, Table } from 'antd';
 import { FileOutlined, PayCircleOutlined, LineChartOutlined, BarChartOutlined } from '@ant-design/icons';
 import { Chart, LineAdvance, DonutChart, Point } from 'bizcharts';
-import { data, data2, data3, data4 } from '@/mock/dashboard';
+import { data, data2, data3, data4 } from '../../../mock/dashboard';
 import type { ColumnsType } from 'antd/es/table';
 
 interface DataType {

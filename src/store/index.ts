@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 import globalSlice from './feature/globalSlice';
+import userSlice from './feature/userSlice';
 const store = configureStore({
-  reducer: { globalSlice },
+  reducer: { globalSlice, userSlice },
 });
 
 export default store;

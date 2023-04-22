@@ -1,7 +1,8 @@
 import React from 'react';
-import { Layout, Space, Input, Tooltip, Badge } from 'antd';
+import { Layout, Space, Input, Tooltip, Badge, Dropdown } from 'antd';
 import { useStoreDispatch, useStoreSelector } from '@/store';
 import { toggleCollapsed } from '@/store/feature/globalSlice';
+import { logout } from '@/store/feature/userSlice';
 import {
   MessageOutlined,
   GithubOutlined,
@@ -11,15 +12,31 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import style from './index.module.less';
-
+import type { MenuProps } from 'antd';
 const { Header } = Layout;
 const color = '#fff';
 const overlayInnerStyle = { color: '#000' };
+
+const items: MenuProps['items'] = [
+  {
+    key: '1',
+    label: '退出登录',
+  },
+];
 function LayoutHeader() {
+  const navigate = useNavigate();
   const dispatch = useStoreDispatch();
   const { collapsed } = useStoreSelector((state) => state.globalSlice);
   const setCollapsed = () => dispatch(toggleCollapsed());
+  const handlelogout: MenuProps['onClick'] = ({ key }) => {
+    switch (key) {
+      case '1':
+        dispatch(logout());
+        break;
+    }
+  };
   return (
     <Header className={style.header}>
       <div className={style.content}>
@@ -46,9 +63,11 @@ function LayoutHeader() {
             <QuestionCircleOutlined className={style.icon} />
           </Tooltip>
           <Tooltip title='用户中心' color={color} overlayInnerStyle={overlayInnerStyle}>
-            <UserOutlined className={style.icon} />
+            <UserOutlined className={style.icon} onClick={() => navigate('/user/info')} />
           </Tooltip>
-          <SettingOutlined className={style.icon} />
+          <Dropdown menu={{ items, onClick: handlelogout }}>
+            <SettingOutlined className={style.icon} />
+          </Dropdown>
         </Space>
       </div>
     </Header>

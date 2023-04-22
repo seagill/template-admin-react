@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, matchRoutes } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import styles from './index.module.less';
@@ -12,20 +12,24 @@ function Menus() {
   const collapsed = useStoreSelector((state) => state.globalSlice.collapsed);
   const location = useLocation();
   const navigate = useNavigate();
-  const paths = matchRoutes(routes, location.pathname);
-  const defaultKeys = paths?.map((item) => item.pathname);
-  const [openKeys, setOpenKeys] = useState(defaultKeys);
-  const [selectedKeys, setSelectedKeys] = useState(defaultKeys);
+
+  const [openKeys, setOpenKeys] = useState<string[]>();
+  const [selectedKeys, setSelectedKeys] = useState<string[]>();
 
   const onOpenChange = (keys: string[]) => {
     setOpenKeys(keys.slice(-1));
   };
 
   const onClick = (i: { key: string; keyPath: string[] }) => {
-    setOpenKeys(i.keyPath);
-    setSelectedKeys([i.key]);
     navigate(i.key);
   };
+
+  useEffect(() => {
+    const paths = matchRoutes(routes, location.pathname);
+    const defaultKeys = paths?.map((item) => item.pathname);
+    setSelectedKeys(defaultKeys);
+    setOpenKeys(defaultKeys);
+  }, [location]);
 
   return (
     <div className={styles.sider}>

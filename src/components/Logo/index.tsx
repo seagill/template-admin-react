@@ -1,10 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 type LogoProps = {
   collapsed: boolean;
 };
 
 function Logo(props: LogoProps) {
+  const navigate = useNavigate();
   return (
-    <div>
+    <div onClick={() => navigate('/')}>
       <span>S</span>
       {!props.collapsed ? (
         <>

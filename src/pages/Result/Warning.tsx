@@ -3,9 +3,14 @@ function ErrorPage() {
   return (
     <Result
       status='warning'
-      title='403'
-      subTitle='您还没有访问该页面的权限，请联系管理员开通'
-      extra={<Button type='primary'>返回首页</Button>}
+      title='格式错误'
+      subTitle='上传的Markdown格式错误'
+      extra={
+        <>
+          <Button type='primary'>重新上传</Button>
+          <Button>返回</Button>
+        </>
+      }
     />
   );
 }

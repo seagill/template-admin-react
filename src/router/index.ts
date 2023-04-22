@@ -31,6 +31,6 @@ export const routes: RouteItem[] = [
   ...userRoutes,
 ];
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, { basename: '/temp/react' });
 
 export default router;

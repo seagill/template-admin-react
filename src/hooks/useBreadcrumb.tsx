@@ -17,7 +17,6 @@ export function useBreadcrumb(): Items[] {
   const location = useLocation();
 
   const paths = matchRoutes(routes, location.pathname);
-
   if (paths) {
     const items: Items[] = paths.map((item) => {
       let pathname = item.pathname;
