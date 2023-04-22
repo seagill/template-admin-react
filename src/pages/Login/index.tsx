@@ -1,6 +1,6 @@
 import { Form, Button, Input, Row, Col, Checkbox, QRCode } from 'antd';
 import styles from './index.module.less';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined, MailOutlined, MobileOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useStoreDispatch } from '@/store';
@@ -28,6 +28,10 @@ export default function Login() {
     formRef.resetFields();
     setLoginType(type);
   };
+
+  useEffect(() => {
+    formRef.resetFields();
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -57,7 +61,7 @@ export default function Login() {
                 </Form.Item>
                 {loginType === 'Account' && (
                   <Form.Item name='password' rules={[{ required: true, message: '请输入密码' }]}>
-                    <Input.Password placeholder='请输入密码' prefix={<LockOutlined />} />
+                    <Input.Password autoComplete='new-password' placeholder='请输入密码' prefix={<LockOutlined />} />
                   </Form.Item>
                 )}
                 {loginType === 'SmsCode' && (
